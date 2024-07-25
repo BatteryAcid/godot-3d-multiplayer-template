@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://bad_icon.png"
 
+[autoload]
+
+NetworkManager="*res://scripts/network/network_manager.gd"
+
 [display]
 
 window/size/always_on_top=true
