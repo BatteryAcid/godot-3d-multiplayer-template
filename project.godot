@@ -1,0 +1,21 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="godot-3d-multiplayer-template-1"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://splash_screen.png"
+config/icon="res://bad_icon.png"
+
+[display]
+
+window/size/always_on_top=true

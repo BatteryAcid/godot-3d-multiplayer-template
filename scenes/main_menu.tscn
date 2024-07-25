@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://ffncciksi1tw"]
+
+[ext_resource type="Texture2D" uid="uid://c8egr8gfrmslx" path="res://asssets/ui/menu-bg.jpeg" id="1_va0jy"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wcff0"]
+[ext_resource type="Theme" uid="uid://e1no5yb08xdc" path="res://asssets/ui/menu_theme.tres" id="2_b784e"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wcff0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackground" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_va0jy")
+expand_mode = 2
+
+[node name="Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -130.0
+offset_right = -416.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HostGame" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 60.0
+offset_right = 164.0
+offset_bottom = 97.0
+theme = ExtResource("2_b784e")
+text = "Host Game"
+flat = true
+
+[node name="JoinGame" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 116.0
+offset_right = 163.0
+offset_bottom = 153.0
+theme = ExtResource("2_b784e")
+text = "Join Game"
+flat = true
+
+[node name="Exit" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 841.0
+offset_top = -171.0
+offset_right = 1012.0
+offset_bottom = -134.0
+theme = ExtResource("2_b784e")
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="Menu/HostGame" to="." method="host_game"]
+[connection signal="pressed" from="Menu/JoinGame" to="." method="join_game"]
+[connection signal="pressed" from="Menu/Exit" to="." method="exit_game"]
