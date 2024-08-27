@@ -1,3 +1,4 @@
+# TODO: move towards rotating player base object instead of model...
 class_name Player extends CharacterBody3D
 
 const SPEED = 5.0
@@ -19,7 +20,9 @@ func _enter_tree():
 	_camera_input.set_multiplayer_authority(str(name).to_int())
 
 func _ready():
-	_movement_sm.init(self, null)
+	
+	var animation_player = _player_model.get_node("AnimationPlayer")
+	_movement_sm.init(self, _player_input, animation_player)
 
 #func _unhandled_input(event: InputEvent) -> void:
 	#if is_multiplayer_authority():
@@ -27,12 +30,14 @@ func _ready():
 		#_movement_sm.process_input(event)
 	#
 func _physics_process(delta):
+
 	# new sm stuff
 	if is_multiplayer_authority():
 		_movement_sm.process_input(null)
 		_movement_sm.process_physics(delta)
-	
-	
+	else:
+		_movement_sm.process_physics_client(delta)
+		
 	# old stuff
 	#_apply_gravity(delta)
 	#

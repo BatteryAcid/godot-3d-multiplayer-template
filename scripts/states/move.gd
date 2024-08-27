@@ -1,6 +1,7 @@
 extends State
 
 @export var _idle_state : State
+@export var _jump_state : State
 
 const SPEED := 5.0
 const JUMP_VELOCITY := 4.5
@@ -10,12 +11,28 @@ const ROTATION_INTERPOLATE_SPEED := 10
 @export var _camera_input : CameraInput
 @export var _player_model : Node3D
 
+func process_physics_client(delta: float):
+	#print("hereasdf")
+	# Smooths out players (model) rotation on clients
+	var from = _player_model.global_transform.basis
+	var to = parent.orientation.basis.get_rotation_quaternion()
+	var model_transform = Basis(from.slerp(to, delta * ROTATION_INTERPOLATE_SPEED))
+	model_transform = model_transform.orthonormalized()
+	_player_model.global_transform.basis = model_transform
+
 func process_physics(delta: float) -> State:
-	# TODO
-	#_process_jump()
-	
+
 	_apply_gravity(delta)
-	
+
+	if get_jump() > 0:
+		return _jump_state
+		
+	# NOTE: changed to use input threshold for idle transition
+	# if parent.velocity.length() < 0.01:
+	elif get_movement_input() == Vector2.ZERO and parent.is_on_floor():
+		print("Move state transition to idle")
+		return _idle_state
+		
 	var camera_basis : Basis = _camera_input.get_camera_rotation_basis()
 	var camera_z := camera_basis.z
 	var camera_x := camera_basis.x
@@ -34,6 +51,7 @@ func process_physics(delta: float) -> State:
 		
 		parent.orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
 	else:
+		# TODO: this will need to be in idle state, probably remove it from here too
 		# Rotates player even if standing still
 		var q_from = parent.orientation.basis.get_rotation_quaternion()
 		var q_to = _camera_input.get_camera_base_quaternion()
@@ -67,11 +85,7 @@ func process_physics(delta: float) -> State:
 		parent.velocity.z = move_toward(parent.velocity.z, 0, SPEED)
 
 	parent.move_and_slide()
-
-	if parent.velocity.length() < 0.01:
-		print("Move state transition to idle")
-		return _idle_state
-
+		
 	return null
 
 func _apply_gravity(delta):

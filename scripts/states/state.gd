@@ -5,19 +5,20 @@ class_name State extends Node
 @export var animation_name: String
 @export var move_speed: float = 400
 
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var state_name: String
 
-var animations: AnimatedSprite2D
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var animation_player: AnimationPlayer
 var move_component
 var parent: Player
 
 func enter() -> void:
-	pass
-	# TODO
-	#animations.play(animation_name)
+	if animation_name != "" && animation_player != null:
+		animation_player.play(animation_name)
 
 func exit() -> void:
-	pass
+	animation_player.stop()
 
 func process_input(event: InputEvent) -> State:
 	return null
@@ -28,8 +29,11 @@ func process_frame(delta: float) -> State:
 func process_physics(delta: float) -> State:
 	return null
 
-func get_movement_input() -> Vector2:
-	return move_component.input_dir #move_component.get_movement_direction()
+func process_physics_client(delta: float):
+	pass
 
-func get_jump() -> bool:
-	return move_component.wants_jump()
+func get_movement_input() -> Vector2:
+	return move_component.input_dir # move_component.get_movement_direction()
+
+func get_jump() -> float:
+	return move_component.jump_input #wants_jump()

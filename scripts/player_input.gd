@@ -5,6 +5,8 @@ var jump_input := 0.0
 var run_input := false
 
 func _physics_process(delta):
-	input_dir = Input.get_vector("left", "right", "forward", "backward")
-	jump_input = Input.get_action_strength("jump")
-	run_input = Input.is_action_pressed("run")
+	# In this case, should be client authority
+	if is_multiplayer_authority():
+		input_dir = Input.get_vector("left", "right", "forward", "backward")
+		jump_input = Input.get_action_strength("jump")
+		run_input = Input.is_action_pressed("run")
