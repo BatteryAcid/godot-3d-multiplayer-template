@@ -1,6 +1,5 @@
 class_name CameraInput extends Node3D
 
-
 @export var camera_mount : Node3D
 @export var camera_rot : Node3D
 @export var camera_3D : Camera3D

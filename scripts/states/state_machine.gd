@@ -1,6 +1,6 @@
 extends Node
 
-# Source: https://github.com/theshaggydev/the-shaggy-dev-projects/tree/main/projects/godot-4/advanced-state-machines
+# Based on: https://github.com/theshaggydev/the-shaggy-dev-projects/tree/main/projects/godot-4/advanced-state-machines
 
 @export var starting_state: State
 
