@@ -2,7 +2,8 @@ extends Control
 
 const GAME_SCENE = "res://scenes/game.tscn"
 
-func ready():
+func _ready():
+	print("Main menu ready...")
 	if OS.has_feature("dedicated_server"):
 		print("Calling host game...")
 		NetworkManager.host_game()

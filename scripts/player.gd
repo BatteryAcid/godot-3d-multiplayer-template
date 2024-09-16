@@ -1,4 +1,6 @@
-# TODO: move towards rotating player base object instead of model...
+# TODO:
+# Adding jump and run to lag comp 
+# fix animation bug where it animates walk on other client, when player is idle
 class_name Player extends CharacterBody3D
 
 const SPEED = 5.0
@@ -27,10 +29,16 @@ func _ready():
 	#if is_multiplayer_authority():
 		#print("Unhandled input hit on peer %s for client %s" % [multiplayer.get_unique_id(), name])
 		#_movement_sm.process_input(event)
-	#
-func _physics_process(delta):
-	if is_multiplayer_authority():
-		_movement_sm.process_input(null)
-		_movement_sm.process_physics(delta)
-	else:
-		_movement_sm.process_physics_client(delta)
+
+func _rollback_tick(delta, tick, is_fresh):
+	_movement_sm.process_physics(delta)
+	
+	#if not is_multiplayer_authority():
+		#_movement_sm.process_physics_client(delta)
+
+#func _physics_process(delta):
+	#if is_multiplayer_authority():
+		## NOT NEEDED _movement_sm.process_input(null)
+		#_movement_sm.process_physics(delta)
+	#else:
+		#_movement_sm.process_physics_client(delta)

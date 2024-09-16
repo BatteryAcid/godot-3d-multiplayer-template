@@ -4,7 +4,10 @@ var input_dir : Vector2 = Vector2.ZERO
 var jump_input := 0.0 
 var run_input := false
 
-func _physics_process(delta):
+func _ready():
+	NetworkTime.before_tick_loop.connect(_gather)
+
+func _gather():
 	# In this case, should be client authority
 	if is_multiplayer_authority():
 		input_dir = Input.get_vector("left", "right", "forward", "backward")

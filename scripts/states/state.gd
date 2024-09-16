@@ -89,7 +89,7 @@ func apply_player_rotation_client(delta: float):
 	var model_transform = Basis(from.slerp(to, delta * ROTATION_INTERPOLATE_SPEED))
 	model_transform = model_transform.orthonormalized()
 	player_model.global_transform.basis = model_transform
-	
+
 func move_player(delta: float, camera_basis: Basis, speed = WALK_SPEED):
 	camera_basis = camera_basis.rotated(camera_basis.x, -camera_basis.get_euler().x)
 	
