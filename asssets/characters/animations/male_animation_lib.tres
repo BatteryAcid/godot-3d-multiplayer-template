@@ -1,0 +1,34 @@
+[gd_resource type="AnimationLibrary" load_steps=15 format=3 uid="uid://ggimxis34dno"]
+
+[ext_resource type="Animation" path="res://asssets/characters/animations/idle.res" id="1_byll3"]
+[ext_resource type="Animation" uid="uid://lnkebxsa3hf4" path="res://asssets/characters/animations/attack.res" id="2_vaolp"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/crouch.res" id="3_dwvso"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/crouch_idle.res" id="4_3oba8"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/crouch_walk.res" id="5_33qgr"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/death.res" id="6_jjeq4"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/interact_ground.res" id="7_v6gju"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/interact_standing.res" id="8_tlbf7"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/jump.res" id="9_dkj3a"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/kick.res" id="10_85svu"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/punch.res" id="11_8yjm8"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/run.res" id="12_qiymp"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/shoot.res" id="13_r2c1s"]
+[ext_resource type="Animation" path="res://asssets/characters/animations/walk.res" id="14_hhi46"]
+
+[resource]
+_data = {
+"attack": ExtResource("2_vaolp"),
+"crouch": ExtResource("3_dwvso"),
+"crouch_idle": ExtResource("4_3oba8"),
+"crouch_walk": ExtResource("5_33qgr"),
+"death": ExtResource("6_jjeq4"),
+"idle": ExtResource("1_byll3"),
+"interact_ground": ExtResource("7_v6gju"),
+"interact_standing": ExtResource("8_tlbf7"),
+"jump": ExtResource("9_dkj3a"),
+"kick": ExtResource("10_85svu"),
+"punch": ExtResource("11_8yjm8"),
+"run": ExtResource("12_qiymp"),
+"shoot": ExtResource("13_r2c1s"),
+"walk": ExtResource("14_hhi46")
+}
