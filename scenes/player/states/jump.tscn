@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7f71e0cfc11713143702f9f6311c72c6e08076878d732271477ff21327ce15c2
-size 201
+[gd_scene load_steps=2 format=3 uid="uid://3yvsj1d1ndbd"]
+
+[ext_resource type="Script" path="res://scripts/states/jump.gd" id="1_h71dj"]
+
+[node name="Jump" type="Node"]
+script = ExtResource("1_h71dj")

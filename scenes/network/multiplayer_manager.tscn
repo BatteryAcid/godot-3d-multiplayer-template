@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fee56351a0c2b5b64423dffa717c0b95eff447c674efddad264a90e572d75ec0
-size 232
+[gd_scene load_steps=2 format=3 uid="uid://btjx4a4g25xj3"]
+
+[ext_resource type="Script" path="res://scripts/network/multiplayer_manager.gd" id="1_4g30v"]
+
+[node name="MultiplayerManager" type="Node"]
+script = ExtResource("1_4g30v")

@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5c7d3ecec1f822e0c51424c0001fb4612f3f83fb653c1d5ff0fa666f025acfac
-size 218
+[gd_scene load_steps=2 format=3 uid="uid://bvnernggja236"]
+
+[ext_resource type="Script" path="res://scripts/network/enet_network.gd" id="1_bi8u0"]
+
+[node name="EnetNetwork" type="Node"]
+script = ExtResource("1_bi8u0")

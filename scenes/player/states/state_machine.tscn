@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e793b1879b37b4b5ab30674be206f8a758752b7e6cca086bfc98ded22f449be3
-size 219
+[gd_scene load_steps=2 format=3 uid="uid://croqoq2vra1tx"]
+
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="1_v6i1d"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_v6i1d")

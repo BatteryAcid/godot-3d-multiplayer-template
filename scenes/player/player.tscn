@@ -1,3 +1,92 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9b4499461983c76440c1cd1dff4b6122853669822837a40394446d55f8b4df5f
-size 4811
+[gd_scene load_steps=15 format=3 uid="uid://xjygpllvas2q"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ec1jl"]
+[ext_resource type="PackedScene" uid="uid://l1d8hwvn7hbq" path="res://scenes/player/camera_input.tscn" id="2_24wjx"]
+[ext_resource type="Script" path="res://scripts/player_input.gd" id="2_e03e3"]
+[ext_resource type="PackedScene" uid="uid://cxjk8dd2j2a0y" path="res://scenes/player/military_male.tscn" id="4_fvytd"]
+[ext_resource type="Script" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="5_5f316"]
+[ext_resource type="PackedScene" uid="uid://dasuy8afc1360" path="res://scenes/player/states/idle.tscn" id="6_oejyl"]
+[ext_resource type="PackedScene" uid="uid://croqoq2vra1tx" path="res://scenes/player/states/state_machine.tscn" id="6_q40uo"]
+[ext_resource type="Script" path="res://addons/netfox/tick-interpolator.gd" id="6_vruc8"]
+[ext_resource type="PackedScene" uid="uid://bqcvbbbfrkhau" path="res://scenes/player/states/move.tscn" id="8_e56u5"]
+[ext_resource type="PackedScene" uid="uid://3yvsj1d1ndbd" path="res://scenes/player/states/jump.tscn" id="9_vqiu1"]
+[ext_resource type="PackedScene" uid="uid://bv1rwy4y0lx7t" path="res://scenes/player/states/fall.tscn" id="10_0voet"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lqghn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g241p"]
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihjgv"]
+radius = 0.35
+height = 2.8
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_player_input", "_camera_input", "_player_model", "_movement_sm", "current_state", "_idle_state", "_move_state", "_jump_state", "_fall_state")]
+script = ExtResource("1_ec1jl")
+_player_input = NodePath("PlayerInput")
+_camera_input = NodePath("CameraInput")
+_player_model = NodePath("MilitaryMale")
+_movement_sm = NodePath("MovementSM")
+current_state = NodePath("MovementSM/Idle")
+_idle_state = NodePath("MovementSM/Idle")
+_move_state = NodePath("MovementSM/Move")
+_jump_state = NodePath("MovementSM/Jump")
+_fall_state = NodePath("MovementSM/Fall")
+
+[node name="CameraInput" parent="." node_paths=PackedStringArray("rollback_synchronizer") instance=ExtResource("2_24wjx")]
+rollback_synchronizer = NodePath("../RollbackSynchronizer")
+
+[node name="MilitaryMale" parent="." instance=ExtResource("4_fvytd")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+visible = false
+mesh = SubResource("CapsuleMesh_lqghn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.581955, -0.48129)
+mesh = SubResource("BoxMesh_g241p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.41129, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_ihjgv")
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("2_e03e3")
+
+[node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("5_5f316")
+root = NodePath("..")
+state_properties = Array[String]([":transform", ":velocity", "MilitaryMale:transform"])
+input_properties = Array[String](["PlayerInput:input_dir", "PlayerInput:jump_input", "PlayerInput:run_input", "CameraInput:camera_basis"])
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("6_vruc8")
+root = NodePath("..")
+properties = Array[String]([":transform", "MilitaryMale:transform"])
+
+[node name="MovementSM" parent="." instance=ExtResource("6_q40uo")]
+
+[node name="Idle" parent="MovementSM" node_paths=PackedStringArray("camera_input", "player_model") instance=ExtResource("6_oejyl")]
+animation_name = "male_animation_lib/idle"
+state_name = "Idle"
+camera_input = NodePath("../../CameraInput")
+player_model = NodePath("../../MilitaryMale")
+
+[node name="Move" parent="MovementSM" node_paths=PackedStringArray("camera_input", "player_model") instance=ExtResource("8_e56u5")]
+animation_name = "male_animation_lib/walk"
+state_name = "Move"
+camera_input = NodePath("../../CameraInput")
+player_model = NodePath("../../MilitaryMale")
+
+[node name="Jump" parent="MovementSM" node_paths=PackedStringArray("camera_input", "player_model") instance=ExtResource("9_vqiu1")]
+animation_name = "male_animation_lib/jump"
+state_name = "Jump"
+camera_input = NodePath("../../CameraInput")
+player_model = NodePath("../../MilitaryMale")
+
+[node name="Fall" parent="MovementSM" node_paths=PackedStringArray("camera_input", "player_model") instance=ExtResource("10_0voet")]
+animation_name = "male_animation_lib/jump"
+state_name = "Fall"
+camera_input = NodePath("../../CameraInput")
+player_model = NodePath("../../MilitaryMale")

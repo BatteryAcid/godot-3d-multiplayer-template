@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:646f7a91c8703d2ce77b568d772aa4fca777fec11a7ed59fb0c8c965a4ccdb7f
-size 202
+[gd_scene load_steps=2 format=3 uid="uid://bv1rwy4y0lx7t"]
+
+[ext_resource type="Script" path="res://scripts/states/fall.gd" id="1_xv7cl"]
+
+[node name="Fall" type="Node"]
+script = ExtResource("1_xv7cl")

@@ -1,3 +1,55 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f29871031037848c95018f8fe55feadafdf19a9916d8a26eb8658635906cb5f
-size 2337
+[gd_scene load_steps=7 format=3 uid="uid://c7jxb55veskqd"]
+
+[ext_resource type="PackedScene" uid="uid://btjx4a4g25xj3" path="res://scenes/network/multiplayer_manager.tscn" id="1_sg3yj"]
+[ext_resource type="Material" uid="uid://dtbe06c2i0ktm" path="res://asssets/world/world_material.tres" id="2_xgt50"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lpk0h"]
+material = ExtResource("2_xgt50")
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ivsg0"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxbk8"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s51rc"]
+size = Vector3(1, 3, 1)
+
+[node name="Game" type="Node3D"]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
+spawn_path = NodePath("../World/PlayerSpawnPoint")
+
+[node name="MultiplayerManager" parent="." node_paths=PackedStringArray("_player_spawn_point") instance=ExtResource("1_sg3yj")]
+_player_spawn_point = NodePath("../World/PlayerSpawnPoint")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Atmosphere" type="Node3D" parent="World"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Atmosphere"]
+transform = Transform3D(1, 0, 0, 0, 0.696001, 0.718041, 0, -0.718041, 0.696001, 0, 4.69122, 6.19946)
+
+[node name="MapSpawnPoint" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/MapSpawnPoint"]
+mesh = SubResource("PlaneMesh_lpk0h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MapSpawnPoint/MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MapSpawnPoint/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ivsg0")
+
+[node name="PlayerSpawnPoint" type="Node3D" parent="World"]
+
+[node name="TestBox" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36251, 0.057869, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/TestBox"]
+shape = SubResource("BoxShape3D_sxbk8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/TestBox/CollisionShape3D"]
+mesh = SubResource("BoxMesh_s51rc")

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f9d70fb85de5c8bfa6284a052f82c20e299f5efa1ae7980f0773eb9edde4cddb
-size 1066
+[gd_scene load_steps=3 format=3 uid="uid://l1d8hwvn7hbq"]
+
+[ext_resource type="Script" path="res://scripts/camera_input.gd" id="1_3wtcb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o6gvm"]
+
+[node name="CameraInput" type="Node3D" node_paths=PackedStringArray("camera_mount", "camera_rot", "camera_3D")]
+script = ExtResource("1_3wtcb")
+camera_mount = NodePath("CameraMount")
+camera_rot = NodePath("CameraMount/CameraRot")
+camera_3D = NodePath("CameraMount/CameraRot/SpringArm3D/Camera3D")
+
+[node name="CameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.93, 2.08165e-12)
+
+[node name="CameraRot" type="Node3D" parent="CameraMount"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraMount/CameraRot"]
+transform = Transform3D(1, -4.83947e-16, 3.21534e-16, 3.21534e-16, 0.921863, 0.387516, -4.83947e-16, -0.387516, 0.921863, 0, 0, 0)
+collision_mask = 2
+shape = SubResource("SphereShape3D_o6gvm")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount/CameraRot/SpringArm3D"]

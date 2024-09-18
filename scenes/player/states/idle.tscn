@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3df2bc32a213d9aa3f0b199db4f7ac313e9c3752b148c0d367881a73666b1037
-size 195
+[gd_scene load_steps=2 format=3 uid="uid://dasuy8afc1360"]
+
+[ext_resource type="Script" path="res://scripts/idle.gd" id="1_1guuh"]
+
+[node name="Idle" type="Node"]
+script = ExtResource("1_1guuh")
