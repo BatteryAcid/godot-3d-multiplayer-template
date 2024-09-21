@@ -24,7 +24,7 @@ func change_state(new_state: State) -> void:
 
 	player.current_state = new_state
 
-	print("change_state: [%s] on peer: %s: " % [new_state.name, multiplayer.get_unique_id()])
+	# print("change_state: [%s] on peer: %s: " % [new_state.name, multiplayer.get_unique_id()])
 	player.current_state.enter()
 
 # Pass through functions for the Player to call, handling state changes as needed.

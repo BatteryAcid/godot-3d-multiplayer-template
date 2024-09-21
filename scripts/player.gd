@@ -1,6 +1,3 @@
-# TODO:
-# - Rotation synched on other clients has jitters 
-#    - Not sure here, TickInterpolator already has the model's transform
 class_name Player extends CharacterBody3D
 
 const SPEED = 5.0
@@ -20,8 +17,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var _move_state : State
 @export var _jump_state : State
 @export var _fall_state : State
-
-var orientation = Transform3D()
 
 @onready var rollback_synchronizer = $RollbackSynchronizer
 

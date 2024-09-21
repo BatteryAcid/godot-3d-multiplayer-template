@@ -46,12 +46,11 @@ func rotate_player_model(delta: float):
 	# NOTE: Model direction issues can be resolved by adding a negative to camera_z, depending on setup.
 	var player_lookat_target = -camera_basis.z
 	
-	var q_from = parent.orientation.basis.get_rotation_quaternion()
+	var q_from = player_model.global_transform.basis.get_rotation_quaternion()
 	var q_to = Transform3D().looking_at(player_lookat_target, Vector3.UP).basis.get_rotation_quaternion()
-	
-	parent.orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
 
-	player_model.global_transform.basis = parent.orientation.basis
+	var set_model_rotation = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
+	player_model.global_transform.basis = set_model_rotation
 
 func move_player(delta: float, movement_input, speed = WALK_SPEED):
 
