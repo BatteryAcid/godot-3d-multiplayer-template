@@ -15,6 +15,7 @@ func _ready():
 		multiplayer.peer_connected.connect(_client_connected)
 		multiplayer.peer_disconnected.connect(_client_disconnected)
 		
+		# NOTE: can comment this out if you want to test locally as a dedicated server (no client)
 		if not OS.has_feature("dedicated_server"):
 			_add_player_to_game(1)
 	

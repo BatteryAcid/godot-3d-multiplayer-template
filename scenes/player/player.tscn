@@ -16,13 +16,12 @@
 radius = 0.35
 height = 2.8
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_player_input", "_camera_input", "_player_model", "_movement_sm", "current_state", "_idle_state", "_move_state", "_jump_state", "_fall_state")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_player_input", "_camera_input", "_player_model", "_movement_sm", "_idle_state", "_move_state", "_jump_state", "_fall_state")]
 script = ExtResource("1_ec1jl")
 _player_input = NodePath("PlayerInput")
 _camera_input = NodePath("CameraInput")
 _player_model = NodePath("MilitaryMale")
 _movement_sm = NodePath("MovementSM")
-current_state = NodePath("MovementSM/Idle")
 _idle_state = NodePath("MovementSM/Idle")
 _move_state = NodePath("MovementSM/Move")
 _jump_state = NodePath("MovementSM/Jump")
@@ -43,7 +42,7 @@ script = ExtResource("2_e03e3")
 [node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("5_5f316")
 root = NodePath("..")
-state_properties = Array[String]([":transform", ":velocity", "MilitaryMale:transform"])
+state_properties = Array[String]([":transform", ":velocity", "MilitaryMale:transform", ":current_state_id"])
 input_properties = Array[String](["PlayerInput:input_dir", "PlayerInput:jump_input", "PlayerInput:run_input", "CameraInput:camera_basis"])
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]

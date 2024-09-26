@@ -14,19 +14,21 @@ func init(parent: Player, move_component: Node, animation_player: AnimationPlaye
 		child_state.move_component = move_component
 
 	# Enter first state
-	player.current_state.enter()
+	player.get_current_state().enter()
 
 # Change to the new state by first calling any exit logic on the current state.
-func change_state(new_state: State) -> void:
-	if player.current_state:
-		#print("Exiting state: %s" % current_state.state_name)
-		player.current_state.exit()
+func change_state(current_state: State, new_state: State) -> void:
+	if current_state: #player.get_current_state():
+		print("Exiting state: %s" % current_state.state_name)
+		current_state.exit()
+		# player.get_current_state().exit()
 
-	player.current_state = new_state
+	player.set_current_state(new_state)
 
-	# print("change_state: [%s] on peer: %s: " % [new_state.name, multiplayer.get_unique_id()])
-	player.current_state.enter()
+	print("change_state: from [%s] to [%s] on peer: %s: " % [current_state.state_name, new_state.state_name, multiplayer.get_unique_id()])
+	new_state.enter()
+	# player.get_current_state().enter()
 
 # Pass through functions for the Player to call, handling state changes as needed.
 func process_physics(delta: float, tick, is_fresh: bool, current_frame) -> void:
-	player.current_state.process_physics(delta, tick, is_fresh, current_frame)
+	player.get_current_state().process_physics(delta, tick, is_fresh, current_frame)
