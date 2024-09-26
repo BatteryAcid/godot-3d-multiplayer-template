@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugjpjn6fpo1f"]
+
+[ext_resource type="PackedScene" uid="uid://c8r1rn6thb3hm" path="res://asssets/world/env/rock_smallG.glb" id="1_mb6be"]
+
+[node name="RockSmallG" type="Node3D"]
+
+[node name="rock_smallG2" parent="." instance=ExtResource("1_mb6be")]

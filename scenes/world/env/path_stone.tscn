@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d6rwj22xeq5h"]
+
+[ext_resource type="PackedScene" uid="uid://dg4d7mgjnttv5" path="res://asssets/world/env/path_stone.glb" id="1_uvehf"]
+
+[node name="PathStone" type="Node3D"]
+
+[node name="path_stone2" parent="." instance=ExtResource("1_uvehf")]

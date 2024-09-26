@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf6qbni1ipu06"]
+
+[ext_resource type="PackedScene" uid="uid://co3eyr836drht" path="res://asssets/world/env/platform_beach.glb" id="1_f1gnh"]
+
+[node name="PlatformBeach" type="Node3D"]
+
+[node name="platform_beach2" parent="." instance=ExtResource("1_f1gnh")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvvppdaitr337"]
+
+[ext_resource type="PackedScene" uid="uid://5tvlr5n1r1l3" path="res://asssets/world/env/ground_riverSplit.glb" id="1_t7dyu"]
+
+[node name="GroundRiverSplit" type="Node3D"]
+
+[node name="ground_riverSplit2" parent="." instance=ExtResource("1_t7dyu")]

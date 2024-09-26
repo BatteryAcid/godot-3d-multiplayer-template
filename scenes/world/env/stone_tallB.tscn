@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkca2dmw8c7n4"]
+
+[ext_resource type="PackedScene" uid="uid://brlisvoeolipa" path="res://asssets/world/env/stone_tallB.glb" id="1_07hie"]
+
+[node name="StoneTallB" type="Node3D"]
+
+[node name="stone_tallB2" parent="." instance=ExtResource("1_07hie")]

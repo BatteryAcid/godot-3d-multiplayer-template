@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfq80yptr838e"]
+
+[ext_resource type="PackedScene" uid="uid://bk5lky548q6rq" path="res://asssets/world/env/stone_smallFlatC.glb" id="1_0f6ue"]
+
+[node name="StoneSmallFlatC" type="Node3D"]
+
+[node name="stone_smallFlatC2" parent="." instance=ExtResource("1_0f6ue")]

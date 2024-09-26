@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl8t3t7re783h"]
+
+[ext_resource type="PackedScene" uid="uid://dn2enfjlpeyqf" path="res://asssets/world/env/ground_riverBend.glb" id="1_ku306"]
+
+[node name="GroundRiverBend" type="Node3D"]
+
+[node name="ground_riverBend2" parent="." instance=ExtResource("1_ku306")]

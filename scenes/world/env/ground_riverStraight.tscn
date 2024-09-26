@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de6yyawsspncr"]
+
+[ext_resource type="PackedScene" uid="uid://cgdyw25nk7t38" path="res://asssets/world/env/ground_riverStraight.glb" id="1_5teg4"]
+
+[node name="GroundRiverStraight" type="Node3D"]
+
+[node name="ground_riverStraight2" parent="." instance=ExtResource("1_5teg4")]

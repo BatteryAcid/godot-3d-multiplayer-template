@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwow7lvb2swor"]
+
+[ext_resource type="PackedScene" uid="uid://dkt3g2cdjynyd" path="res://asssets/world/env/stone_smallE.glb" id="1_y8450"]
+
+[node name="StoneSmallE" type="Node3D"]
+
+[node name="stone_smallE2" parent="." instance=ExtResource("1_y8450")]

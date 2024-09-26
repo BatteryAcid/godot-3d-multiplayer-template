@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xjygpllvas2q"]
+[gd_scene load_steps=13 format=3 uid="uid://xjygpllvas2q"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ec1jl"]
 [ext_resource type="PackedScene" uid="uid://l1d8hwvn7hbq" path="res://scenes/player/camera_input.tscn" id="2_24wjx"]
@@ -11,11 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bqcvbbbfrkhau" path="res://scenes/player/states/move.tscn" id="8_e56u5"]
 [ext_resource type="PackedScene" uid="uid://3yvsj1d1ndbd" path="res://scenes/player/states/jump.tscn" id="9_vqiu1"]
 [ext_resource type="PackedScene" uid="uid://bv1rwy4y0lx7t" path="res://scenes/player/states/fall.tscn" id="10_0voet"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lqghn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_g241p"]
-size = Vector3(1, 0.25, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihjgv"]
 radius = 0.35
@@ -37,15 +32,6 @@ _fall_state = NodePath("MovementSM/Fall")
 rollback_synchronizer = NodePath("../RollbackSynchronizer")
 
 [node name="MilitaryMale" parent="." instance=ExtResource("4_fvytd")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
-visible = false
-mesh = SubResource("CapsuleMesh_lqghn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.581955, -0.48129)
-mesh = SubResource("BoxMesh_g241p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.41129, 2.08165e-12)

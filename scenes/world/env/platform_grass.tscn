@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuw17vqemv52"]
+
+[ext_resource type="PackedScene" uid="uid://b6y506vjlqqcf" path="res://asssets/world/env/platform_grass.glb" id="1_pq0j3"]
+
+[node name="PlatformGrass" type="Node3D"]
+
+[node name="platform_grass2" parent="." instance=ExtResource("1_pq0j3")]
