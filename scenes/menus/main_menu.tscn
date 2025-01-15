@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ffncciksi1tw"]
+[gd_scene load_steps=4 format=3 uid="uid://ffncciksi1tw"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_l7uga"]
 [ext_resource type="Texture2D" uid="uid://c8egr8gfrmslx" path="res://asssets/ui/menu-bg.jpeg" id="2_hugc6"]
-[ext_resource type="Script" path="res://scripts/menus/menu.gd" id="3_jtdmb"]
 [ext_resource type="Theme" uid="uid://e1no5yb08xdc" path="res://asssets/ui/menu_theme.tres" id="4_idst6"]
 
 [node name="MainMenu" type="Control"]
@@ -42,7 +41,6 @@ offset_top = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_jtdmb")
 
 [node name="Exit" type="Button" parent="Menu"]
 layout_mode = 1
