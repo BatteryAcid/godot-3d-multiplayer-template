@@ -62,6 +62,8 @@ spawn_path = NodePath("../World/PlayerSpawnPoint")
 [node name="MultiplayerManager" parent="." node_paths=PackedStringArray("_player_spawn_point") instance=ExtResource("1_sg3yj")]
 _player_spawn_point = NodePath("../World/PlayerSpawnPoint")
 
+[node name="InGameMenu" parent="." instance=ExtResource("25_se3ur")]
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="Atmosphere" type="Node3D" parent="World"]
@@ -547,5 +549,3 @@ mesh = SubResource("PlaneMesh_lpk0h")
 shape = SubResource("ConcavePolygonShape3D_m5eq6")
 
 [node name="PlayerSpawnPoint" type="Node3D" parent="World"]
-
-[node name="InGameMenu" parent="." instance=ExtResource("25_se3ur")]

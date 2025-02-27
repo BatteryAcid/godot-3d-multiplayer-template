@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ffncciksi1tw"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wcff0"]
-[ext_resource type="Texture2D" uid="uid://yli35jpr7rkb" path="res://asssets/ui/menu-bg.jpg" id="2_3v3je"]
-[ext_resource type="Theme" uid="uid://e1no5yb08xdc" path="res://asssets/ui/menu_theme.tres" id="2_b784e"]
+[ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="2_b784e"]
+[ext_resource type="Texture2D" uid="uid://yli35jpr7rkb" path="res://asssets/ui/menu-bg.jpg" id="2_yqvau"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="3_ewi18"]
 
 [node name="MainMenu" type="Control"]
@@ -22,14 +22,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundTexture" type="TextureRect" parent="Panel"]
+[node name="MenuBackground" type="TextureRect" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3v3je")
+texture = ExtResource("2_yqvau")
 expand_mode = 2
 
 [node name="Menu" type="Panel" parent="."]

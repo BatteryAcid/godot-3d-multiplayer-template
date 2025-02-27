@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cys03q34jt762"]
+[gd_scene load_steps=3 format=3 uid="uid://cys03q34jt762"]
 
 [ext_resource type="Script" path="res://scripts/menus/in_game_menu.gd" id="1_4hjsv"]
+[ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="2_sdrml"]
 
 [node name="InGameMenu" type="Control"]
 layout_mode = 3
@@ -30,11 +31,15 @@ theme_override_constants/v_separation = 8
 [node name="Resume" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+theme = ExtResource("2_sdrml")
+theme_override_font_sizes/font_size = 24
 text = "Resume"
 
 [node name="Quit" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+theme = ExtResource("2_sdrml")
+theme_override_font_sizes/font_size = 24
 text = "Quit"
 
 [connection signal="pressed" from="GridContainer/Resume" to="." method="_on_resume_pressed"]
