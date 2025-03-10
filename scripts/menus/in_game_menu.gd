@@ -20,6 +20,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_resume_pressed() -> void:
 	hide()
+	
+func _on_main_menu_pressed():
+	NetworkManager.disconnect_from_game()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

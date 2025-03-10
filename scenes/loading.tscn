@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c67jewon3ifdt"]
+[gd_scene load_steps=4 format=3 uid="uid://c67jewon3ifdt"]
 
+[ext_resource type="Script" path="res://scripts/loading.gd" id="1_n6pky"]
 [ext_resource type="Texture2D" uid="uid://yli35jpr7rkb" path="res://asssets/ui/menu-bg.jpg" id="1_rw763"]
-[ext_resource type="Theme" uid="uid://e1no5yb08xdc" path="res://asssets/ui/menu_theme.tres" id="1_ybmgc"]
+[ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="1_ybmgc"]
 
 [node name="Loading" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n6pky")
 
 [node name="Loading" type="Panel" parent="."]
 layout_mode = 1
@@ -45,3 +47,17 @@ grow_vertical = 2
 theme = ExtResource("1_ybmgc")
 theme_override_font_sizes/font_size = 48
 text = "Connecting..."
+
+[node name="MainMenu" type="Button" parent="Loading"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_left = 895.0
+offset_top = 31.0
+offset_right = 1118.0
+offset_bottom = 71.0
+theme = ExtResource("1_ybmgc")
+theme_override_font_sizes/font_size = 24
+text = "Back to Main Menu"
+flat = true
+
+[connection signal="pressed" from="Loading/MainMenu" to="." method="_on_main_menu_pressed"]

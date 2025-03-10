@@ -35,6 +35,13 @@ theme = ExtResource("2_sdrml")
 theme_override_font_sizes/font_size = 24
 text = "Resume"
 
+[node name="MainMenu" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme = ExtResource("2_sdrml")
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -43,4 +50,5 @@ theme_override_font_sizes/font_size = 24
 text = "Quit"
 
 [connection signal="pressed" from="GridContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="GridContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="GridContainer/Quit" to="." method="_on_quit_pressed"]

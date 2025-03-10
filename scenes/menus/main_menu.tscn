@@ -1,18 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://ffncciksi1tw"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wcff0"]
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_1dabp"]
 [ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="2_b784e"]
 [ext_resource type="Texture2D" uid="uid://yli35jpr7rkb" path="res://asssets/ui/menu-bg.jpg" id="2_yqvau"]
-[ext_resource type="Script" path="res://scripts/menu.gd" id="3_ewi18"]
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_413xs"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("host_game_button", "join_game_button", "secondary_network_menu_parent")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wcff0")
+script = ExtResource("1_1dabp")
+host_game_button = NodePath("Menu/HostGame")
+join_game_button = NodePath("Menu/JoinGame")
+secondary_network_menu_parent = NodePath("SecondaryNetworkMenuParent")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -42,7 +46,6 @@ offset_top = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_ewi18")
 
 [node name="Exit" type="Button" parent="Menu"]
 layout_mode = 1
@@ -79,6 +82,19 @@ offset_bottom = 157.0
 theme = ExtResource("2_b784e")
 text = "Join Game"
 flat = true
+
+[node name="SecondaryNetworkMenuParent" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = 29.0
+offset_right = -241.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_413xs")
 
 [connection signal="pressed" from="Menu/Exit" to="." method="exit_game"]
 [connection signal="pressed" from="Menu/HostGame" to="." method="host_game"]

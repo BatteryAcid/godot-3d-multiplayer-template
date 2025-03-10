@@ -40,3 +40,6 @@ func rotate_camera(move):
 func get_camera_rotation_basis() -> Basis:
 	# Use camera_mount here so we don't have to worry about correcting for lean
 	return camera_mount.global_transform.basis 
+
+func _exit_tree():
+	NetworkTime.before_tick_loop.disconnect(_gather)

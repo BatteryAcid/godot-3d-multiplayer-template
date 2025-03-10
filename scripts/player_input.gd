@@ -13,3 +13,6 @@ func _gather():
 		input_dir = Input.get_vector("left", "right", "forward", "backward")
 		jump_input = Input.is_action_pressed("jump")
 		run_input = Input.is_action_pressed("run")
+
+func _exit_tree():
+	NetworkTime.before_tick_loop.disconnect(_gather)

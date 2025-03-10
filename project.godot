@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot-3d-multiplayer-template-1"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://splash_screen.png"
 config/icon="res://bad_icon.png"
