@@ -1,34 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://ecbxwo8h2c1l"]
+[gd_scene load_steps=3 format=3 uid="uid://bovdouhtnq13k"]
 
-[ext_resource type="Script" path="res://scripts/menus/enet_menu.gd" id="1_sjfiw"]
-[ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="2_cobrq"]
+[ext_resource type="Script" path="res://scripts/menus/noray_menu.gd" id="1_v4v6j"]
+[ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="1_xu2a1"]
 
-[node name="EnetMenu" type="Control" node_paths=PackedStringArray("go_button", "back_button", "host_ip_input", "host_port_input", "option_label")]
+[node name="NorayMenu" type="Control" node_paths=PackedStringArray("go_button", "back_button", "host_ip_input", "host_gameid_input", "option_label")]
 layout_mode = 3
-anchors_preset = 0
-theme = ExtResource("2_cobrq")
-script = ExtResource("1_sjfiw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xu2a1")
+script = ExtResource("1_v4v6j")
 go_button = NodePath("VBoxContainer/BoxContainer/Go")
 back_button = NodePath("VBoxContainer/BoxContainer/Back")
 host_ip_input = NodePath("VBoxContainer/HostIP")
-host_port_input = NodePath("VBoxContainer/Port")
+host_gameid_input = NodePath("VBoxContainer/GameId")
 option_label = NodePath("OptionLabel")
 
 [node name="OptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 30.0
-offset_right = 504.0
-offset_bottom = 84.0
+offset_left = 18.0
+offset_top = 32.0
+offset_right = 502.0
+offset_bottom = 71.0
 theme_override_font_sizes/normal_font_size = 36
-text = "Connect to Host's Game"
+text = "Connect to game on Noray!"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 88.0
-offset_right = 424.0
-offset_bottom = 275.0
+offset_left = 18.0
+offset_top = 91.0
+offset_right = 425.0
+offset_bottom = 278.0
 theme_override_constants/separation = 10
 
 [node name="HostIP" type="LineEdit" parent="VBoxContainer"]
@@ -36,30 +40,29 @@ layout_mode = 2
 theme_override_colors/font_placeholder_color = Color(0.631373, 0.556863, 0, 1)
 theme_override_colors/font_color = Color(0.631373, 0.556863, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "127.0.0.1"
-placeholder_text = "Enter Host's IP"
+placeholder_text = "Enter Noray IP"
 
-[node name="Port" type="LineEdit" parent="VBoxContainer"]
+[node name="GameId" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_placeholder_color = Color(0.631373, 0.556863, 0, 1)
 theme_override_colors/font_color = Color(0.631373, 0.556863, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "8080"
-placeholder_text = "Enter Host's Port"
+placeholder_text = "Enter Host's Game ID"
 
 [node name="BoxContainer" type="BoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="Back" type="Button" parent="VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(119, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 text = "Back"
 flat = true
 
 [node name="Go" type="Button" parent="VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0, 0.819608, 0, 1)
 text = "Go!"
 flat = true

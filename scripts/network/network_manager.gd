@@ -9,10 +9,11 @@ const MAIN_MENU_SCENE = "res://scenes/menus/main_menu.tscn"
 const LOCALHOST = "127.0.0.1"
 const DEDICATED_SERVER_FEATURE_NAME = "dedicated_server"
 
-enum AvailableNetworks {ENET}
+enum AvailableNetworks {ENET, NORAY}
 
 var _available_networks: Dictionary = {
-	0: {"scene":"res://scenes/network/enet_network.tscn", "menu":"res://scenes/menus/enet_menu.tscn"}
+	0: {"scene":"res://scenes/network/enet_network.tscn", "menu":"res://scenes/menus/enet_menu.tscn"},
+	1: {"scene":"res://scenes/network/noray_network.tscn", "menu":"res://scenes/menus/noray_menu.tscn"}
 }
 
 # Default to ENET

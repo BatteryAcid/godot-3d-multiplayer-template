@@ -6,17 +6,19 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_413xs"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("host_game_button", "join_game_button", "secondary_network_menu_parent")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("host_game_button", "join_game_button", "secondary_network_menu_parent", "toggle_secondary_network_checkbox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_b784e")
 script = ExtResource("1_1dabp")
 host_game_button = NodePath("Menu/HostGame")
 join_game_button = NodePath("Menu/JoinGame")
 secondary_network_menu_parent = NodePath("SecondaryNetworkMenuParent")
+toggle_secondary_network_checkbox = NodePath("Menu/SecondaryToggle")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -57,29 +59,36 @@ offset_top = 52.0
 offset_right = -39.0
 offset_bottom = 103.0
 grow_horizontal = 0
-theme = ExtResource("2_b784e")
 theme_override_font_sizes/font_size = 48
 text = "Exit"
+flat = true
+
+[node name="SecondaryToggle" type="CheckButton" parent="Menu"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 16.0
+offset_right = 277.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 18
+text = "Enable Noray P2P"
 flat = true
 
 [node name="HostGame" type="Button" parent="Menu"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-offset_left = 59.0
-offset_top = 51.0
-offset_right = 312.0
-offset_bottom = 102.0
-theme = ExtResource("2_b784e")
+offset_left = 61.0
+offset_top = 62.0
+offset_right = 314.0
+offset_bottom = 113.0
 text = "Host Game"
 flat = true
 
 [node name="JoinGame" type="Button" parent="Menu"]
 layout_mode = 2
-offset_left = 59.0
-offset_top = 106.0
-offset_right = 312.0
-offset_bottom = 157.0
-theme = ExtResource("2_b784e")
+offset_left = 55.0
+offset_top = 125.0
+offset_right = 308.0
+offset_bottom = 176.0
 text = "Join Game"
 flat = true
 
@@ -97,5 +106,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_413xs")
 
 [connection signal="pressed" from="Menu/Exit" to="." method="exit_game"]
+[connection signal="toggled" from="Menu/SecondaryToggle" to="." method="_on_secondary_toggle_toggled"]
 [connection signal="pressed" from="Menu/HostGame" to="." method="host_game"]
 [connection signal="pressed" from="Menu/JoinGame" to="." method="join_game"]

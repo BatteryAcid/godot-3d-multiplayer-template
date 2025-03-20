@@ -3,6 +3,7 @@ extends Control
 @export var host_game_button: Button
 @export var join_game_button: Button
 @export var secondary_network_menu_parent: Control
+@export var toggle_secondary_network_checkbox: CheckButton
 
 var _is_hosting = false
 
@@ -52,17 +53,29 @@ func _reset_main_menu_options():
 	_is_hosting = false
 	host_game_button.visible = true
 	join_game_button.visible = true
+	
+	toggle_secondary_network_checkbox.visible = true
+	toggle_secondary_network_checkbox.set_pressed_no_signal(false) # reset secondary selection
 
 	NetworkManager.reset_selected_network()
 
 func _hide_main_menu_options():
 	host_game_button.visible = false
 	join_game_button.visible = false
+	
+	toggle_secondary_network_checkbox.visible = false
 
 func _cancel_secondary_menu():
 	_reset_main_menu_options()
 	# Remove secondary menu
 	secondary_network_menu_parent.get_children()[0].queue_free()
+
+func _on_secondary_toggle_toggled(noray_enabled):
+	print("Noray enabled %s" % noray_enabled)
+	if noray_enabled:
+		NetworkManager.set_selected_network(NetworkManager.AvailableNetworks.NORAY)
+	else:
+		NetworkManager.set_selected_network(NetworkManager.AvailableNetworks.ENET)
 
 func exit_game():
 	get_tree().quit(0)

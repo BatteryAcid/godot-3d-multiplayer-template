@@ -3,14 +3,17 @@
 [ext_resource type="Script" path="res://scripts/menus/in_game_menu.gd" id="1_4hjsv"]
 [ext_resource type="Theme" uid="uid://giidcej8oij7" path="res://asssets/ui/menu_theme.tres" id="2_sdrml"]
 
-[node name="InGameMenu" type="Control"]
+[node name="InGameMenu" type="Control" node_paths=PackedStringArray("active_host_label", "game_id_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_sdrml")
 script = ExtResource("1_4hjsv")
+active_host_label = NodePath("ConnectionInfoPanel/GridContainer/IpPanel/IpLabel")
+game_id_label = NodePath("ConnectionInfoPanel/GridContainer/GameIdPanel/GameIdLabel")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -31,24 +34,71 @@ theme_override_constants/v_separation = 8
 [node name="Resume" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme = ExtResource("2_sdrml")
 theme_override_font_sizes/font_size = 24
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme = ExtResource("2_sdrml")
 theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme = ExtResource("2_sdrml")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
+
+[node name="ConnectionInfoPanel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 370.0
+offset_bottom = 75.0
+
+[node name="GridContainer" type="GridContainer" parent="ConnectionInfoPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -29.5
+offset_right = 180.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 8
+
+[node name="IpPanel" type="HBoxContainer" parent="ConnectionInfoPanel/GridContainer"]
+layout_mode = 2
+
+[node name="IpLabel" type="RichTextLabel" parent="ConnectionInfoPanel/GridContainer/IpPanel"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host IP"
+
+[node name="CopyIp" type="Button" parent="ConnectionInfoPanel/GridContainer/IpPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Copy"
+
+[node name="GameIdPanel" type="HBoxContainer" parent="ConnectionInfoPanel/GridContainer"]
+layout_mode = 2
+
+[node name="GameIdLabel" type="RichTextLabel" parent="ConnectionInfoPanel/GridContainer/GameIdPanel"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game ID"
+
+[node name="CopyGameId" type="Button" parent="ConnectionInfoPanel/GridContainer/GameIdPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Copy"
 
 [connection signal="pressed" from="GridContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="GridContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="GridContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ConnectionInfoPanel/GridContainer/IpPanel/CopyIp" to="." method="_on_copy_ip_pressed"]
+[connection signal="pressed" from="ConnectionInfoPanel/GridContainer/GameIdPanel/CopyGameId" to="." method="_on_copy_game_id_pressed"]
